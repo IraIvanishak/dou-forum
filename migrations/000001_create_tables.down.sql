@@ -1,0 +1,5 @@
+DROP TABLE IF EXISTS last_read_comments;
+DROP TABLE IF EXISTS likes;
+DROP TABLE IF EXISTS comments;
+DROP TABLE IF EXISTS topics;
+DROP TABLE IF EXISTS users;

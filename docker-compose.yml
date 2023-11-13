@@ -7,13 +7,13 @@ services:
     ports:
       - "5442:5432"
     environment:
-      POSTGRES_DB: mydb
+      POSTGRES_DB: forum-db
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U user -d mydb"]
+      test: ["CMD-SHELL", "pg_isready -U user -d forum-db"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -24,7 +24,7 @@ services:
       - postgres
     volumes:
       - ./migrations:/migrations
-    command: ["-path=/migrations/", "-database", "postgres://user:password@postgres:5432/mydb?sslmode=disable", "up"]
+    command: ["-path=/migrations/", "-database", "postgres://user:password@postgres:5432/forum-db?sslmode=disable", "up"]
     restart: on-failure
 
 volumes:
